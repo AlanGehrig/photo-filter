@@ -16,7 +16,8 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtCore import QThread, pyqtSignal, Qt, QTimer
 from PyQt5.QtGui import QIcon, QKeySequence, QPixmap, QImage
 
-from photofilter.core import Photo, ImageAnalyzer, FilterEngine, get_matcher
+from photofilter.core import Photo, ImageAnalyzer, FilterEngine
+# get_matcher 暂时禁用（PyTorch兼容性问题）
 from photofilter.core.exif_tools import ExifReader, BatchRenamer
 from photofilter.config import ConfigManager
 
@@ -103,9 +104,9 @@ class SemanticWorker(QThread):
             return
         
         try:
-            self.status.emit("加载 CLIP 模型...")
-            matcher = get_matcher()
-            matcher.load()
+            self.status.emit("语义匹配功能暂时不可用（已禁用PyTorch）")
+            self.finished.emit([])
+            return
             
             total = len(self.photos)
             results = []
