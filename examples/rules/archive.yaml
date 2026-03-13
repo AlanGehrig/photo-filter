@@ -1,0 +1,21 @@
+# 存档筛选规则
+archive:
+  enabled: true
+  basic_filters:
+    resolution:
+      min_width: 1920
+      min_height: 1080
+    blur_score:
+      max: 50
+    exposure:
+      min: 0.15
+      max: 0.85
+    formats: ["jpg", "jpeg", "png", "tiff"]
+  semantic_matching:
+    enabled: true
+    keywords: ["文档", "合同", "发票", "证件"]
+    match_threshold: 0.25
+  output:
+    sort_by: "quality"
+    top_n: 100
+    save_path: "./output/archive"

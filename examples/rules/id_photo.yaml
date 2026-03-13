@@ -1,0 +1,17 @@
+# 证件照筛选规则
+id_photo:
+  enabled: true
+  basic_filters:
+    resolution:
+      min_width: 800
+      min_height: 1200
+    face_detection:
+      required: true
+      min_size: 0.3
+    formats: ["jpg", "jpeg", "png"]
+  semantic_matching:
+    enabled: false
+  output:
+    sort_by: "quality"
+    top_n: 5
+    save_path: "./output/id_photo"

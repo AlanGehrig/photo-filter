@@ -1,0 +1,21 @@
+# 社交媒体筛选规则
+social_media:
+  enabled: true
+  basic_filters:
+    resolution:
+      min_width: 1080
+      min_height: 1080
+    blur_score:
+      max: 30
+    exposure:
+      min: 0.2
+      max: 0.8
+    formats: ["jpg", "jpeg", "png"]
+  semantic_matching:
+    enabled: true
+    keywords: ["风景", "美食", "人物", "旅行"]
+    match_threshold: 0.3
+  output:
+    sort_by: "match_score"
+    top_n: 20
+    save_path: "./output/social_media"
