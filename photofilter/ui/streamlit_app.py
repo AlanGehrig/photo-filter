@@ -1,16 +1,22 @@
-"""Web UI using Streamlit."""
+"""Web UI using Streamlit - Optimized."""
 import streamlit as st
 import yaml
 from pathlib import Path
 import shutil
 import concurrent.futures
 from typing import Optional
+import time
 
-from photofilter.core import Photo, ImageAnalyzer, SemanticMatcher, FilterEngine
+from photofilter.core import Photo, ImageAnalyzer, SemanticMatcher, FilterEngine, get_matcher
 from photofilter.config import ConfigManager
 
 
-st.set_page_config(page_title="Photo Filter", page_icon="📷")
+st.set_page_config(
+    page_title="Photo Filter", 
+    page_icon="📷",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 
 class WebUI:
