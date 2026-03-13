@@ -1,28 +1,15 @@
 @echo off
-echo ========================================
-echo   Photo Filter Pro - 照片过滤器
-echo ========================================
+cd /d "%~dp0"
+title Photo Filter Pro
+
+echo Starting Photo Filter Pro...
 echo.
 
-REM Check Python
-python --version >nul 2>&1
-if errorlevel 1 (
-    echo [错误] 未找到 Python
-    echo 请先安装 Python 3.8+: https://www.python.org/downloads/
-    pause
-    exit /b 1
-)
+:: 直接运行Python，不等待输出
+start "" pythonw.exe run_gui.py
 
-REM Install dependencies if needed
-echo [1/3] 检查依赖...
-pip show PyQt5 >nul 2>&1
-if errorlevel 1 (
-    echo [2/3] 安装依赖...
-    pip install -r requirements.txt
-)
+:: 等待一下让窗口启动
+timeout /t 2 /nobreak >nul
 
-REM Run the app
-echo [3/3] 启动应用...
-python -m photofilter.ui.gui
-
+echo 程序已启动！
 pause
